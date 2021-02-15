@@ -14,10 +14,10 @@
     <body>
         <div class="container">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#menu1">Fist</a></li>
-                <li><a data-toggle="tab" href="#menu2">Second</a></li>
-                <li><a data-toggle="tab" href="#menu3">Third</a></li>
-                <li><a data-toggle="tab" href="#menu4">Fourth</a></li>
+                <li class="active"><a data-toggle="tab" href="#menu1">Map</a></li>
+                <li><a data-toggle="tab" href="#menu2">Bar Chart</a></li>
+                <li><a data-toggle="tab" href="#menu3">Line Chart</a></li>
+                <li><a data-toggle="tab" href="#menu4">BoxPlot Chart</a></li>
             </ul>
         
             <div class="tab-content">
@@ -28,7 +28,7 @@
                         total number of shootings. Each state can be clicked on to be zoomed. Once zoomed in, there
                         will be markers showing the exact location of the shootings. 
                     </p>
-                    
+                    <div id="mapChart" class="svg-container"></div>
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <h3>Bar Chart</h3>
@@ -37,7 +37,8 @@
                         is race. There will be a dropdown where the user will be able to sort the barchart by ascending
                         or descending order of cases. 
                     </p>
-                    <div class="chart"></div>
+                    <!-- <svg class="barChart"></svg> -->
+                    <div id="barChart" class="svg-container"></div>
                 </div>
                 <div id="menu3" class="tab-pane fade">
                     <h3>Line Chart</h3>
@@ -57,7 +58,10 @@
                 </div>
             </div>
         </div>
-        <script src="https://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
-        <script src="./my.js"></script>
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <script src="./barChart.js"></script>
+        <script>
+             
+        </script>
     </body>
 </html>
