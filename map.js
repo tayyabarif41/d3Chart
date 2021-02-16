@@ -1,9 +1,10 @@
-var w = 1400;
-    var h = 700;
-    var svg = d3.select("div#container").append("svg").attr("preserveAspectRatio", "xMinYMin meet").style("background-color","#c9e8fd")
-    .attr("viewBox", "0 0 " + w + " " + h)
+var width = 500;
+var height = 500;
+
+var svg = d3.select("div#mapChart").append("svg").attr("preserveAspectRatio", "xMinYMin meet").style("background-color","#c9e8fd")
+    .attr("viewBox", "0 0 " + width + " " + height)
     .classed("svg-content", true);
-    var projection = d3.geoMercator().translate([w/2, h/2]).scale(2200).center([0,40]);
+    var projection = d3.geoMercator().translate([width/2, height/2]).scale(2200).center([0,40]);
     var path = d3.geoPath().projection(projection);
         
   // load data  
