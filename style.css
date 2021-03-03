@@ -43,3 +43,6 @@ svg {
   font-size: 11px;
   fill: #3c373d;
 }
+.bar {
+  fill: steelblue;
+}

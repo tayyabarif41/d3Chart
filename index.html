@@ -28,7 +28,7 @@
                         total number of shootings. Each state can be clicked on to be zoomed. Once zoomed in, there
                         will be markers showing the exact location of the shootings. 
                     </p>
-                    <div id="mapChart" class="svg-container"></div>
+                    <div id="mapChart"></div>
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <h3>Bar Chart</h3>
@@ -44,8 +44,8 @@
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a>Ascending </a></li>
-                            <li><a>Descending </a></li>
+                            <li><a id="ascending">Ascending </a></li>
+                            <li><a id="descending">Descending </a></li>
                         </ul>
                       </div>
                     <div id="barChart" class="svg-container"></div>
@@ -69,11 +69,7 @@
             </div>
         </div>
         <script src="https://d3js.org/d3.v6.min.js"></script>
-        <script src="./barChart.js"></script>
-        <script src="./map.js"></script>
-
-        <script>
-             
-        </script>
+        <!-- <script src="./map.js"></script> -->
+        <script src="./bChart.js"></script>
     </body>
 </html>
