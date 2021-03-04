@@ -20,8 +20,8 @@ var svg = d3.select("div#barChart").append("svg")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // get the data
+// update = chart.update(order)
 d3.json("police_shooting.json").then(function(data) {
-
   // format the data
     var grouped = data.reduce(function (r, a) {
         r[a.race] = r[a.race] || [];
@@ -33,7 +33,27 @@ d3.json("police_shooting.json").then(function(data) {
     var data = []
     Object.keys(grouped).map((key) => {
         var element = grouped[key]
-        data.push([element.length, key])
+        if(key == 'W'){
+          data.push([element.length, "White, non-Hispanic"])
+        }
+        if(key == 'B'){
+          data.push([element.length, "Black, non-Hispanic"])
+        }
+        if(key == 'A'){
+          data.push([element.length, "Asian"])
+        }
+        if(key == 'N'){
+          data.push([element.length, "Native American"])
+        }
+        if(key == 'H'){
+          data.push([element.length, "Hispanic"])
+        }
+        if(key == 'O'){
+          data.push([element.length, "Other"])
+        }
+        if(key == ''){
+          data.push([element.length, "Unknown"])
+        }
     });
     console.log("Data", data)
   // Scale the range of the data in the domains
@@ -49,7 +69,6 @@ d3.json("police_shooting.json").then(function(data) {
       .attr("width", x.bandwidth())
       .attr("y", function(d) { return y(d[0]); })
       .attr("height", function(d) { return height - y(d[0]); });
-
   // add the x Axis
   svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -59,4 +78,55 @@ d3.json("police_shooting.json").then(function(data) {
   svg.append("g")
       .call(d3.axisLeft(y));
 
+  d3.select("#ascending").on("click", function() {
+    console.log("SORTING", data)
+    data.sort(function(a, b) {
+      return d3.ascending(a[0], b[0])
+    })
+    x.domain(data.map(function(d) {
+      return d[1];
+    }));
+    svg.select("g")
+      .call(d3.axisBottom(x));
+    svg.selectAll(".bar")
+      .transition()
+      .duration(500)
+      .attr("x", function(d, i) {
+        return x(d[1]);
+    })
+
+    // svg.selectAll(".val-label")
+    //   .transition()
+    //   .duration(500)
+    //   .attr("x", function(d, i) {
+    //     return x(d[1]) + x.bandwidth() / 2;
+    // })
+
+    // svg.selectAll(".bar-label")
+    //   .transition()
+    //   .duration(500)
+    //   .attr("transform", function(d, i) {
+    //     return "translate(" + (x(d[1].key) + x.bandwidth() / 2 - 8) + "," + (height + 15) + ")" + " rotate(45)"
+    //   })
+    })
+
+    d3.select("#descending").on("click", function() {
+      console.log("SORTING" , data)
+      data.sort(function(a, b) {
+        return d3.ascending(b[0], a[0])
+      })
+     x.domain(data.map(function(d) {
+      return d[1];
+    }));
+    svg.select("g")
+      .call(d3.axisBottom(x));
+      svg.selectAll(".bar")
+        .transition()
+        .duration(500)
+        .attr("x", function(d, i) {
+          return x(d[1]);
+      })
+    })
+
 });
+
